@@ -25,9 +25,12 @@ app.get('/:fileName', function (req, res) {
 	res.sendFile(__dirname + '/'+ fileName);
 });
 // adding functionality to log the requests
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
 	var filename = path.basename(req.url);
 	var extension = path.extname(filename);
 	console.log("The file " + filename + " was requested.");
 	next();
-});
+});*/
+// serve static files - e.g. html, css
+// this should always be the last line in the server file
+app.use(express.static(__dirname));
